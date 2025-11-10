@@ -16,7 +16,7 @@ public class Product {
     @Column(name = "name_product", length = 40) private String nameProduct;
     @Column(name = "price_product", length = 10) private int priceProduct;
     @Column(name = "description_product", length = 100) private String descriptionProduct;
-    @Column(name = "url_product", length = 100) private String urlImage;
+    @Column(name = "url_product", length = 300) private String urlImage;
     @Column(name = "stock_product", length = 5) private int stockProduct;
 
 }
