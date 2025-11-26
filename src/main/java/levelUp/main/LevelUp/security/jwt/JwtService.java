@@ -4,6 +4,7 @@ import javax.crypto.SecretKey;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Claims;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -28,22 +29,37 @@ public class JwtService {
     }
 
     public String extractUsername(String token) {
-        return Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .getSubject();
+        try {
+            return Jwts.parser()
+                    .verifyWith(getSigningKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload()
+                    .getSubject();
+        } catch (JwtException e) {
+            System.out.println("Error extrayendo username: " + e.getMessage());
+            return null;
+        }
     }
 
     public boolean isTokenValid(String token) {
         try {
-            Jwts.parser()
+            Claims claims = Jwts.parser()
                     .verifyWith(getSigningKey())
                     .build()
-                    .parseSignedClaims(token);
-            return true;
+                    .parseSignedClaims(token)
+                    .getPayload();
+
+            // ⭐ Verificar que no esté expirado
+            Date expiration = claims.getExpiration();
+            boolean isValid = expiration != null && expiration.after(new Date());
+
+            System.out.println("🔍 Token expira en: " + expiration);
+            System.out.println("🔍 Token es válido: " + isValid);
+
+            return isValid;
         } catch (JwtException e) {
+            System.out.println("❌ Token inválido: " + e.getMessage());
             return false;
         }
     }
