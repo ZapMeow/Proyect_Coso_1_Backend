@@ -21,6 +21,7 @@ public class JwtService {
 
     // Generar token con rol
     public String generateToken(String username, String role) {
+        System.out.println("new token to generate with role " + role + " and username " + username);
         return Jwts.builder()
                 .subject(username)
                 .claim("role", role) // ⭐ Agregar rol al token
@@ -39,6 +40,7 @@ public class JwtService {
                     .getPayload()
                     .getSubject();
         } catch (JwtException e) {
+            System.out.println("error extracting username");
             return null;
         }
     }
@@ -53,12 +55,14 @@ public class JwtService {
                     .getPayload();
             return claims.get("role", String.class);
         } catch (JwtException e) {
+            System.out.println("error extracting role");
             return null;
         }
     }
 
     public boolean isTokenValid(String token) {
         try {
+            System.out.println(token);
             Claims claims = Jwts.parser()
                     .verifyWith(getSigningKey())
                     .build()

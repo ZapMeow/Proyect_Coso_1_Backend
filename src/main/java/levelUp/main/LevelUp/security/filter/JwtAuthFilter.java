@@ -30,10 +30,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String path = request.getRequestURI();
+        System.out.println("Path used " + path);
 
         // NO validar token en rutas públicas
-        if (path.startsWith("/auth/") || path.startsWith("/h2-console/")) {
+        if (path.startsWith("/api/auth/") || path.startsWith("/h2-console/")) {
             filterChain.doFilter(request, response);
+            System.out.println("doesn't need verification");
             return;
         }
 

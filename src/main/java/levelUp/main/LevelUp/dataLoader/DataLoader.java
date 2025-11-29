@@ -1,9 +1,12 @@
 package levelUp.main.LevelUp.dataLoader;
 
 import levelUp.main.LevelUp.model.Product;
+import levelUp.main.LevelUp.model.User;
 import levelUp.main.LevelUp.repository.ProductRepository;
+import levelUp.main.LevelUp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,6 +17,12 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -40,6 +49,9 @@ public class DataLoader implements CommandLineRunner {
 
         productRepository.saveAll(products);
 
+        User user1 = User.builder().username("username").password(passwordEncoder.encode("password")).role("USER").build();
+
+        userRepository.save(user1);
         System.out.println("Data loaded.");
     }
 }

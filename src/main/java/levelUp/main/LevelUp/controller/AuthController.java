@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("api/auth")
 public class AuthController {
 
     private final AuthenticationManager authManager;
@@ -30,6 +30,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Map<String, String> body) {
         try {
+            System.out.println("making a user");
             String username = body.get("username");
             String password = body.get("password");
             String role = body.getOrDefault("role", "USER"); // Por defecto USER
