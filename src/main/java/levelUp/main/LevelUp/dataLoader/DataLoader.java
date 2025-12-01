@@ -29,6 +29,15 @@ public class DataLoader implements CommandLineRunner, LinkImages {
     @Override
     public void run(String... args) throws Exception {
         List<Product> products = Arrays.asList(
+                Product.builder().nameProduct("Audifonos muy gamer").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Audifonos epicamente gaymer para todos los gays").categoryProduct("gaymer").urlImage(LinkImages.AUDIFONOS_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Camara 8k 360fps").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Camara para grabar tus plays de lol y subirlas al titok").categoryProduct("gaymer").urlImage(LinkImages.CAMARA_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Kit para Osu!").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Jugador de osu! promedio").categoryProduct("gaymer").urlImage(LinkImages.KIT_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Lampara RGB").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Lampara para hacer convulsionar a tu amigo epileptico").categoryProduct("gaymer").urlImage(LinkImages.LAMPARA_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Microfono con supresion").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Para que escuchen hasta tus respiraciones").categoryProduct("gaymer").urlImage(LinkImages.MICROFONO_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Mousepad con extra mouse").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Mouse al cuadrado").categoryProduct("gaymer").urlImage(LinkImages.MOUSEPAD).stockProduct(20).build(),
+                Product.builder().nameProduct("Silla extra comoda").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("El seba se sienta y pasa a mejor vida").categoryProduct("gaymer").urlImage(LinkImages.SILLA_GAMER).stockProduct(20).build(),
+                Product.builder().nameProduct("Teclado de membrana").distributorProduct("Gaymer").linkDistributor("www.example/gaymer.com").priceProduct(10000).descriptionProduct("Para escribir en silencio").categoryProduct("gaymer").urlImage(LinkImages.TECLADO_GAMER).stockProduct(20).build(),
+
                 Product.builder().nameProduct("Catan").distributorProduct("Catan Inc.").linkDistributor("https://youtu.be/J8SBp4SyvLc?si=3Y4W4pOTVIH4Urgu").priceProduct(29990).descriptionProduct("Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores.").categoryProduct("tablegame").urlImage(LinkImages.CATAN_GAME).stockProduct(10).build(),
                 Product.builder().nameProduct("Secretlab Titan").distributorProduct("Silla Inc.").linkDistributor("https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N").priceProduct(249990).descriptionProduct("Diseñada para el máximo confort, esta silla ofrece soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.").categoryProduct("chair").urlImage(LinkImages.CHAIR_IMAGE).stockProduct(10).build(),
                 Product.builder().nameProduct("Logitech G502 HERO").distributorProduct("Mause Inc.").linkDistributor("https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N").priceProduct(49990).descriptionProduct("Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan control y rendimiento.").categoryProduct("mouse").urlImage(LinkImages.MOUSE_IMAGE).stockProduct(10).build(),
@@ -47,6 +56,8 @@ public class DataLoader implements CommandLineRunner, LinkImages {
                 Product.builder().nameProduct("Peluche zeraora XL").distributorProduct("meow inc").linkDistributor("https://example.com/meowing").priceProduct(3000000).descriptionProduct("Es el zera peluche").categoryProduct("plush").urlImage(LinkImages.ZERAORA_PLUSH).stockProduct(10).build(),
                 Product.builder().nameProduct("Xbox 720").distributorProduct("Microsoft 2").linkDistributor("https://example.com/microsoft_2").priceProduct(9999999).descriptionProduct("La legendaria consola sucesora de la Xbox 360").categoryProduct("console").urlImage(LinkImages.XBOX_720).stockProduct(10).build(),
                 Product.builder().nameProduct("Zeebo").distributorProduct("brasil").linkDistributor("https://example.com/microsoft_2").priceProduct(100000).descriptionProduct("Esta consola nacio muerta").categoryProduct("console").urlImage(LinkImages.ZEEBO).stockProduct(10).build()
+
+
         );
 
         productRepository.saveAll(products);

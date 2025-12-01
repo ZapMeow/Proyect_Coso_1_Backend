@@ -21,4 +21,13 @@ public interface LinkImages {
     String XBOX_720 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcuT5R8zp_VzfnYh4UeRnUbfzoNxHdQQvqC9hsL-lvOsGEZTgOccLhxPoRfR0Ro9LjOmw&usqp=CAU";
     String ZEEBO = "https://i.blogs.es/9170c0/zeebo-2/1366_2000.jpeg";
 
+    String AUDIFONOS_GAMER = "https://i1.sndcdn.com/artworks-MQ1vYzMuPVxNfJgQ-3IpelQ-t1080x1080.png";
+    String CAMARA_GAMER = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT6r8H6ZUPK6ydmhcwZCx-cVm1Zt_sfIl3UFP8iXVdijjrpWuKK";
+    String KIT_GAMER = "https://i.ytimg.com/vi/MEcAV8Q2g-o/sddefault.jpg";
+    String LAMPARA_GAMER = "https://img.freepik.com/foto-gratis/vista-diseno-futurista-lampara-luz_23-2151037519.jpg?semt=ais_hybrid&w=740&q=80";
+    String MICROFONO_GAMER = "https://www.google.com/search?vsrid=CPCbzanY4drSRxACGAEiJDBjMWMzMmUyLTcwZDUtNGM0Yy05NTBlLThmZDc0NTVhMjg1ZjIGIgJjZygOOO3s4MmanZED&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABEMIBGIMCJQAAgD8&udm=26&lns_mode=un&source=lns.web.gsbubb&vsdim=194,259&gsessionid=sl3LZLMAHbmO3yiz4eBGQMccfrhtmry1wYDH89i-cn_suaZWTFay3A&lsessionid=CxFwTDgVOznxJzKsfObemEU5A1vi3fY7Nc_wDJi0HM_sSJd77TYUPw&lns_surface=26&authuser=0&lns_vfs=e&qsubts=1764620216407&biw=1528&bih=738&hl=es-419";
+    String MOUSEPAD = "https://images7.memedroid.com/images/UPLOADED389/6648e92f81202.jpeg";
+    String SILLA_GAMER = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToOhjKYllLZqs_6hxFeKqe_4vkS0nhN4cf3iA9nepwJeTZ9ul8";
+    String TECLADO_GAMER = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSLH5us9knMXXR2Lio_oXeH2YRXl42uY7VzTnTYSH2qOOxKrfJB";
+
 }
