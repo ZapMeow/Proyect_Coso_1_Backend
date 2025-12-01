@@ -25,4 +25,7 @@ public class User {
     @Column(nullable = false)
     private String role; // "ADMIN" o "USER"
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
 }

@@ -17,14 +17,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/getAllProducts")
     public List<Product> getAllBooks(){
         return productService.allProducts();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public Product getProductById(@PathVariable long id){
         return productService.findProductById(id);
     }
