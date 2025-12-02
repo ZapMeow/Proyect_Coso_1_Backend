@@ -28,4 +28,16 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String typeUser;
+
+    @Column(nullable = false)
+    private int points;
+
+    @Column(nullable = false)
+    private String range;
+
+    @Column(nullable = false)
+    private boolean isPremium;
+
 }
