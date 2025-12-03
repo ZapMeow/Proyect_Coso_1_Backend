@@ -3,6 +3,8 @@ package levelUp.main.LevelUp.controller;
 import levelUp.main.LevelUp.model.User;
 import levelUp.main.LevelUp.security.jwt.JwtService;
 import levelUp.main.LevelUp.service.UserService;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.expression.spel.ast.BooleanLiteral;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,29 +39,39 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody Map<String, String> body) {
         try {
             System.out.println("making a user");
+
             String username = body.get("username");
             String password = body.get("password");
-            String role = body.getOrDefault("role", "USER"); // Por defecto USER
+            String role = body.getOrDefault("role", "USER");
+            String email = body.getOrDefault("email", "");
+            String typeUser = body.getOrDefault("typeUser", "");
+            int points = Integer.parseInt(body.getOrDefault("points", "0"));
+            String range = body.getOrDefault("range", "NONE");
+            boolean isPremium = "duocuc".equalsIgnoreCase(typeUser);
 
             if (username == null || password == null || username.isBlank() || password.isBlank()) {
                 return ResponseEntity.badRequest()
                         .body(Map.of("error", "Username y password son requeridos"));
             }
 
-            // Validar rol
             if (!role.equals("USER") && !role.equals("ADMIN")) {
                 role = "USER";
             }
 
-            userService.register(username, password, role);
+            userService.register(username, password, role, email, typeUser, points, range, isPremium);
+
             return ResponseEntity.ok(Map.of(
                     "message", "Usuario registrado correctamente",
                     "role", role
             ));
 
-        } catch (Exception e) {
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(Map.of("error", "El usuario ya existe"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "Error interno: " + e.getMessage()));
         }
     }
 
@@ -78,6 +90,11 @@ public class AuthController {
                         .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
                 String token = jwtService.generateToken(username, user.getRole());
+
+                System.out.println(Map.of(
+                        "token", token,
+                        "username", username,
+                        "role", user.getRole()));
 
                 return ResponseEntity.ok(Map.of(
                         "token", token,

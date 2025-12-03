@@ -21,18 +21,23 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     // Registro con rol específico
-    public User register(String username, String password, String role) {
+    public User register(String username, String password, String role, String email, String typeUser, int points, String range, boolean isPremium) {
         User user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
                 .role(role != null ? role : "USER") // Por defecto USER
+                .email(email)
+                .typeUser(typeUser)
+                .points(points)
+                .range(range)
+                .isPremium(isPremium)
                 .build();
         return userRepository.save(user);
     }
 
     // Registro simple (siempre como USER)
-    public User register(String username, String password) {
-        return register(username, password, "USER");
+    public User register(String username, String password, String email, String typeUser, int points, String range, boolean isPremium) {
+        return register(username, password, "USER", email, typeUser, points, range, isPremium);
     }
 
     public Optional<User> findByUsername(String username) {
