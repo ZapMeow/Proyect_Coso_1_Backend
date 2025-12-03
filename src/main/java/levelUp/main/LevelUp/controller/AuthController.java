@@ -94,12 +94,17 @@ public class AuthController {
                 System.out.println(Map.of(
                         "token", token,
                         "username", username,
-                        "role", user.getRole()));
+                        "role", user.getRole(), // Devolver rol
+                        "user", user));
 
                 return ResponseEntity.ok(Map.of(
                         "token", token,
                         "username", username,
-                        "role", user.getRole() // Devolver rol
+                        "role", user.getRole(),
+                        "premium", user.isPremium(),
+                        "points", user.getPoints(),
+                        "range", user.getRange(),
+                        "email", user.getEmail()
                 ));
             }
             System.out.println("invalid credentials");
