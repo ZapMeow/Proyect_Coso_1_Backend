@@ -127,4 +127,20 @@ public class AuthController {
     public ResponseEntity<?> validateToken() {
         return ResponseEntity.ok(Map.of("valid", true));
     }
+
+    @GetMapping("/getUser/{username}")
+    public ResponseEntity<?> getUserByUsername(@PathVariable String username){
+        System.out.println("buscando un usuario");
+        try{
+            User user = userService.findByUsername(username)
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+            System.out.println("usuario encontrado");
+            return ResponseEntity.ok(Map.of("found", true));
+        }catch (Exception e){
+            System.out.println("usuario no encontrado");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("found", false));
+        }
+
+    }
 }
