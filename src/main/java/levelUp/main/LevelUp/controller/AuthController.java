@@ -104,7 +104,8 @@ public class AuthController {
                         "premium", user.isPremium(),
                         "points", user.getPoints(),
                         "range", user.getRange(),
-                        "email", user.getEmail()
+                        "email", user.getEmail(),
+                        "id", user.getId()
                 ));
             }
             System.out.println("invalid credentials");

@@ -15,9 +15,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Book API")
+                        .title("API epica no la usen")
                         .version("1.0")
-                        .description("API protegida con JWT"))
+                        .description("API protegida con Fé"))
                 .components(new Components()
                         .addSecuritySchemes("bearer-key",
                                 new SecurityScheme()
