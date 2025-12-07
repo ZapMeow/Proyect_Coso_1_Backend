@@ -125,7 +125,7 @@ public class AuthController {
     }
 
     @GetMapping("/validate")
-    public ResponseEntity<?> validateToken() {
+    public ResponseEntity<?> validateToken(String token) {
         return ResponseEntity.ok(Map.of("valid", true));
     }
 

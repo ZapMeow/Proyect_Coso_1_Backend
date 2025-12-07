@@ -4,6 +4,7 @@ import levelUp.main.LevelUp.model.User;
 import levelUp.main.LevelUp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -17,7 +18,10 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        return ResponseEntity.ok(userService.updateUser(id, updatedUser));
+        System.out.println("update dates: "+ updatedUser);
+        User user = userService.updateUser(id, updatedUser);
+        System.out.println("user updated: " + user);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{username}")
@@ -28,6 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/getUserById/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         System.out.println(userService.getUserById(id));
         return userService.getUserById(id)
