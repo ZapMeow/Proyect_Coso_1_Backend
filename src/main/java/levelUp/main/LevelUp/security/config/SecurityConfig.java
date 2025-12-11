@@ -39,19 +39,20 @@ public class SecurityConfig {
         return http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/product/getClientProducts").permitAll()
-                        .requestMatchers("/api/users/**").permitAll()
-                        .requestMatchers("/api/users/getUserById/**").authenticated()
-                        .anyRequest().authenticated()
-                )
+                .sessionManagement(sess ->
+                        sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                            .authorizeHttpRequests(auth -> auth
+                            .requestMatchers("/api/auth/**").permitAll()
+                            .requestMatchers("/h2-console/**").permitAll()
+                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                            .requestMatchers("/admin/**").hasRole("ADMIN")
+                            .requestMatchers("/api/product/getClientProducts").permitAll()
+                            .requestMatchers("/api/users/getUserById/**").authenticated()
+                            .anyRequest().authenticated()
+                            )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+                .headers(headers ->
+                        headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .build();
     }
 

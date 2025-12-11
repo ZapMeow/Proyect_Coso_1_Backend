@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtService {
 
     private static final String SECRET_KEY = "una_clave_secreta_larga_y_segura_de_al_menos_32_bytes";
-    private static final long EXPIRATION = 1000 * 120;
+    private static final long EXPIRATION = 1000 * 10;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());

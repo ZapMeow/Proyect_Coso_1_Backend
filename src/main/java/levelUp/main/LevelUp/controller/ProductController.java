@@ -38,6 +38,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public Product getProductById(@PathVariable long id){
         return productService.findProductById(id);
     }

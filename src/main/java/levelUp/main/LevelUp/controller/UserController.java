@@ -17,6 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         System.out.println("update dates: "+ updatedUser);
         User user = userService.updateUser(id, updatedUser);
@@ -25,6 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/{username}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
         return userService.findByUsername(username)
                 .map(ResponseEntity::ok)
