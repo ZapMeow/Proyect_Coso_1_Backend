@@ -47,6 +47,7 @@ public class SecurityConfig {
                             .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                             .requestMatchers("/admin/**").hasRole("ADMIN")
                             .requestMatchers("/api/product/getClientProducts").permitAll()
+                                            .requestMatchers("/api/product/androidStudio").permitAll()
                             .requestMatchers("/api/users/getUserById/**").authenticated()
                             .anyRequest().authenticated()
                             )

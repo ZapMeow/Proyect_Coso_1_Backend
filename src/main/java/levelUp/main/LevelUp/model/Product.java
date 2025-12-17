@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Entity(name = "product")
 @Builder
 public class Product {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_product") private long idProduct;
     @Column(name = "name_product", length = 40) private String nameProduct;
@@ -23,5 +22,4 @@ public class Product {
     @Column(name = "description_product", length = 300) private String descriptionProduct;
     @Column(name = "url_product", length = 500) private String urlImage;
     @Column(name = "stock_product", length = 5) private int stockProduct;
-
 }
